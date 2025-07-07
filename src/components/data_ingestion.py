@@ -5,10 +5,7 @@ from src.logger import logging
 from dataclasses import dataclass
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from src.components.data_transformation import (
-    DataTransformation,
-    DataTransformationConfig,
-)
+from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
 
 
@@ -84,7 +81,7 @@ if __name__ == "__main__":
         ingested_train_path=ingested_train_path,
         ingested_test_path=ingested_test_path,
     )
-    
+
     model_trainer = ModelTrainer()
     score = model_trainer.model_trainer(train_array=train_array, test_array=test_array)
     print(score)

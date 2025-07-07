@@ -1,6 +1,5 @@
 import os
 import sys
-import pandas as pd
 import numpy as np
 from dataclasses import dataclass
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
@@ -54,7 +53,7 @@ class ModelTrainer:
                 ),
                 "XGBoost": XGBRegressor(),
             }
-
+            
             model_report: dict = evaluate_model(
                 X_train=X_train,
                 y_train=y_train,

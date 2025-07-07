@@ -5,6 +5,10 @@ from src.logger import logging
 from dataclasses import dataclass
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from src.components.data_transformation import (
+    DataTransformation,
+    DataTransformationConfig,
+)
 
 
 # Using dataclass since we are only defining variables in the class
@@ -20,7 +24,7 @@ class DataIngestion:
         self.data_ingestion_config = DataIngestionConfig()
 
     def data_ingestion(self):
-        logging.info("Initiating data ingestion method")
+        logging.info("--- INITIATING DATA INGESTION PROCESS ---")
         try:
             df = pd.read_csv(
                 "/Users/ricardo-rojas/Documents/GitHub/students-performance/data/students_performance.csv"
@@ -59,7 +63,7 @@ class DataIngestion:
                 header=True,
             )
             logging.info("Raw data, train and test sets saved in artifacts folder")
-            logging.info("Data ingestion completed")
+            logging.info("--- DATA INGESTION PROCESS COMPLETED ---")
 
             return (
                 self.data_ingestion_config.raw_data_path,
@@ -71,5 +75,11 @@ class DataIngestion:
 
 
 if __name__ == "__main__":
-    obj = DataIngestion()
-    obj.data_ingestion()
+    data_ingestion = DataIngestion()
+    _, ingested_train_path, ingested_test_path = data_ingestion.data_ingestion()
+
+    data_transformation = DataTransformation()
+    data_transformation.data_transformation(
+        ingested_train_path=ingested_train_path,
+        ingested_test_path=ingested_test_path,
+    )

@@ -25,7 +25,7 @@ class DataIngestion:
         logging.info("--- INITIATING DATA INGESTION PROCESS ---")
         try:
             df = pd.read_csv(
-                "/Users/ricardo-rojas/Documents/GitHub/students-performance/data/students_performance.csv"
+                "data/students_performance.csv"
             )
             logging.info("Read dataset as DataFrame")
 

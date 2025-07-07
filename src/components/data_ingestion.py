@@ -24,9 +24,7 @@ class DataIngestion:
     def data_ingestion(self):
         logging.info("--- INITIATING DATA INGESTION PROCESS ---")
         try:
-            df = pd.read_csv(
-                "data/students_performance.csv"
-            )
+            df = pd.read_csv("data/students_performance.csv")
             logging.info("Read dataset as DataFrame")
 
             os.makedirs(

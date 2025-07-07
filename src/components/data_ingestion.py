@@ -9,6 +9,7 @@ from src.components.data_transformation import (
     DataTransformation,
     DataTransformationConfig,
 )
+from src.components.model_trainer import ModelTrainer
 
 
 # Using dataclass since we are only defining variables in the class
@@ -79,7 +80,11 @@ if __name__ == "__main__":
     _, ingested_train_path, ingested_test_path = data_ingestion.data_ingestion()
 
     data_transformation = DataTransformation()
-    data_transformation.data_transformation(
+    train_array, test_array, _ = data_transformation.data_transformation(
         ingested_train_path=ingested_train_path,
         ingested_test_path=ingested_test_path,
     )
+    
+    model_trainer = ModelTrainer()
+    score = model_trainer.model_trainer(train_array=train_array, test_array=test_array)
+    print(score)

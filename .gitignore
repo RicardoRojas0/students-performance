@@ -209,3 +209,4 @@ __marimo__/
 # Specific to the project
 artifacts/
 logs/
+catboost_info/
